@@ -53,10 +53,11 @@ def main():
 		elif response == '2':
 			displayOptions()
 		elif response == '3':
-			print "\nEnter your groupId"
-			print "Don't know it? Type %s\n" % colored("find", 'green')
 
 			while True:
+                                print "\nEnter your groupId"
+			        print "Don't know it? Type %s\n" % colored("find", 'green')
+                                title = findGroups()
 				user_input = raw_input('> ')
 				user_input = user_input.strip()
 
@@ -71,6 +72,7 @@ def main():
 				elif user_input == 'exit':
 					return
                                 elif user_input == 'back':
+                                        comp.clear_complete_list()
                                         break
 				else:
 					while True:
@@ -164,7 +166,7 @@ def findGroups():
 def getGroups(base_url):
 	print "Fetching groups...\n"
 	req = requests.get(url=base_url+"?", params={'token':ACCESS_KEY})
-	print req.url
+	#print req.url
 
 	data = json.loads(req.content)
 
